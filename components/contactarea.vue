@@ -1,5 +1,5 @@
 <template>
-    <div class="main-contact">
+    <div class="main-contact" >
         <form action="submit" class="contact-form">
             <label for="email" class="labels">Email</label>
             <input type="text" id="email" class="textinputs">
@@ -21,31 +21,19 @@
 <script setup>
 import { ref } from 'vue';
 
-// const { data } = await useFetch('/api/send')
-
-// console.log(data)
-
-// import { Resend } from 'resend';
-
-// const resend = new Resend('re_7fN7bVKb_47TTqqk4ZYwzhdRMJbXkyrq6');
-
-// function sedit() {
-//     console.log('this ran')
-//     resend.emails.send({
-//       from: 'adriaanrudi@gmail.com',
-//       to: ['adiecode4@gmail.com'],
-//       subject: 'Hello world',
-//       html: '<strong>It works!</strong>',
-//     });
-// }
+const props = defineProps({
+    formWidth: Number
+})
 </script>
 
 <style lang="css" scoped>
 .contact-form{
     width: 585px;
     height: 660px;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
+    margin: 10px;
 }
 
 .labels{
@@ -79,7 +67,7 @@ textarea{
 
 #button {
     width: 158px;
-    min-height: 66px;
+    min-height: 60px;
     color: black;
     font-size: 32px;
     font-weight: 700;

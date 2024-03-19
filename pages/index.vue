@@ -3,24 +3,24 @@
     <div class="main-page"> <!-- Add class here -->
         <!-- Content of the component -->
         <div class="options">
-            <div class="introduction">
+            <div class="greeting">
                 <h3>Hi i'm</h3>
                 <h1>Adriaan</h1>
             </div>
             <div class="choices">
-                <div class="about" >
+                <div class="about" @click="goToAbout">
                     <maincard :imageSource="navInfo.about.imageSource" :title="navInfo.about.title" :height="navInfo.about.height" :width="navInfo.about.width" :rotation="navInfo.about.rotation"/>
                 </div>
     
-                <div class="projects">
+                <div class="projects" @click="goToProjects">
                     <maincard :imageSource="navInfo.projects.imageSource" :title="navInfo.projects.title" :height="navInfo.projects.height" :width="navInfo.projects.width" :rotation="navInfo.projects.rotation"/>
                 </div>
     
-                <div class="what-i-know">
+                <div class="what-i-know" @click="goToWhatIKnow">
                     <maincard :imageSource="navInfo.whatIKnow.imageSource" :title="navInfo.whatIKnow.title" :height="navInfo.whatIKnow.height" :width="navInfo.whatIKnow.width" :rotation="navInfo.whatIKnow.rotation"/>
                 </div>
     
-                <div class="my-likes">
+                <div class="my-likes" @click="goToMyLikes">
                     <maincard :imageSource="navInfo.myLikes.imageSource" :title="navInfo.myLikes.title" :height="navInfo.myLikes.height" :width="navInfo.myLikes.width" :rotation="navInfo.myLikes.rotation"/>
                 </div>
             </div>
@@ -47,7 +47,7 @@
 
 <script setup>
 import contactarea from '~/components/contactarea.vue';
-
+const router = useRouter()
 
 const navInfo = {
   about : {
@@ -80,10 +80,62 @@ const navInfo = {
   }
 }
 
-let hello = "this is something";
+function goToAbout() {
+  router.push('/about');
+}
+
+function goToProjects() {
+  router.push('/projects');
+}
+
+function goToWhatIKnow() {
+  router.push('/what-I-know');
+}
+
+function goToMyLikes() {
+  router.push('/my-likes');
+}
 </script>
 
-<style lang="css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: "Inconsolata", monospace;
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  background-color: #373737;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #009900a2; /* Color of the scrollbar handle */
+  border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2dfe2dae; /* Color of the scrollbar handle when hovered */
+}
+
+/* Track when the handle is being dragged */
+::-webkit-scrollbar-thumb:active {
+  background: #2dfe2d; /* Color of the scrollbar handle when being dragged */
+}
+.main-page{
+
+  background-color: #181818;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+</style>
+
+<style lang="css" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 *{
   margin: 0px;
@@ -129,6 +181,7 @@ let hello = "this is something";
   justify-content: space-evenly;
   align-items: center;
   position: relative;
+
 }
 
 .choices{
@@ -168,7 +221,7 @@ let hello = "this is something";
   cursor: pointer;
 }
 
-.introduction{
+.greeting{
   position: absolute; 
   top: 50%; 
   left: 50%; 
@@ -179,13 +232,13 @@ let hello = "this is something";
   z-index: 1;
 }
 
-.introduction h3{
+.greeting h3{
  font-size: 24px;
  font-weight: 400;
  color: white;
 }
 
-.introduction h1{
+.greeting h1{
  font-size: 128px;
  font-weight: 500;
  background-image: linear-gradient(to right, #009900, #2dfe2d, #009900);
@@ -212,7 +265,7 @@ let hello = "this is something";
 
 .contact{
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -274,7 +327,7 @@ let hello = "this is something";
         width: 550px;
         height: 560px;
     }
-    .introduction{
+    .greeting{
         margin-top: 20px;
         transform : translate(0);
         position: static;
@@ -305,16 +358,16 @@ let hello = "this is something";
 }
 
 @media (max-width: 600px) {
-  .introduction h3{
+  .greeting h3{
     font-size: 24px;
    }
 
-  .introduction h1{
+  .greeting h1{
     font-size: 68px;
    }
    
    .main-page{
-    height: 370vh;
+    height: 340vh;
    }
    .choices{
     justify-content: flex-start;
