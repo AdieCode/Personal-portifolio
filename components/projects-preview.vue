@@ -1,15 +1,13 @@
 <template>
     <scroll-progress :scrollPersentage="scrollPercentage"/>
     <div class="container"  ref="scrollContainer" @scroll="updateScrollPercentage" >
-
-        <!-- container cursor -->
-        <!-- <div class="cursor-inner" :style="{ 'top': mousePosition.y + 'px', 'left': mousePosition.x + 'px' }" v-if="!isMobileDevice()"></div>
-        <div class="cursor-outer" :style="{ 'top': mousePosition.y + 'px', 'left': mousePosition.x + 'px' }" v-if="!isMobileDevice()"></div> -->
             
-        <project-one v-if="props.projectNumber === 0"/>
-        <project-two v-if="props.projectNumber === 1"/>
-
-
+        <project-one v-if="props.projectNumber === 0" />
+        <project-two v-if="props.projectNumber === 1" />
+        <project-three v-if="props.projectNumber === 2" />
+        <project-four v-if="props.projectNumber === 3" />
+        <project-five v-if="props.projectNumber === 4" />
+        <project-six v-if="props.projectNumber === 5" />
 
 
         <!-- <div class="blur-container"></div> -->
@@ -18,7 +16,7 @@
 </template>
 
 <script setup>
-import {ref } from 'vue';  
+import { ref, watch  } from 'vue';  
 
 const scrollPercentage = ref('0%');
 const scrollContainer = ref();
@@ -26,7 +24,7 @@ const scrollContainer = ref();
 let scrollTopPos = 0;
 
 const props = defineProps({
-    projectNumber: Number
+    projectNumber: Number,
 })
 
 function updateScrollPercentage() {
@@ -38,16 +36,14 @@ function updateScrollPercentage() {
     scrollPercentage.value = (scrollTop / scrollHeight) * 100 + '%';
 }
 
-// // Function to update mouse coordinates when mouse moves
-// const updateMousePosition = (event) => {
-
-//     mousePosition.value = {
-//       x: event.clientX ,
-//       y: event.clientY + scrollTopPos 
-//     };
-  
-// };
-
+watch(() => props.projectNumber, (newVal, oldVal) => {
+  console.log(`projectNumber changed from ${oldVal} to ${newVal}`);
+  // You can add any logic you want to execute when projectNumber changes here
+  // For example, resetting scroll position
+  if (scrollContainer.value) {
+    scrollContainer.value.scrollTop = 0;
+  }
+})
 
 function isMobileDevice() {
     // Check if navigator object exists

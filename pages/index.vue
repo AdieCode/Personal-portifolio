@@ -53,7 +53,7 @@ const navInfo = {
   about : {
     imageSource : 'images/user.png',
     title: 'About me',
-    height : '290',
+    height : '260',
     width: '277',
     rotation: '-10'
   },
@@ -67,7 +67,7 @@ const navInfo = {
   whatIKnow : {
     imageSource : 'images/brain.png',
     title: 'What I know',
-    height : '335',
+    height : '320',
     width: '304',
     rotation: '18'
   },

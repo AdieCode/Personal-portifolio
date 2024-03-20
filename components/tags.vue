@@ -17,6 +17,7 @@ const props = defineProps({
 .tags{
     width: 80%;
     margin: auto;
+    margin-bottom: 20px;
     display: flex;
     /* justify-content: center; */
     flex-wrap: wrap;
@@ -36,7 +37,7 @@ const props = defineProps({
 }
 
 .tag:hover{
-    box-shadow:  0px 0px 6px #00FF00;
+    box-shadow:  0px 0px 6px 4px #00FF00;
 
 }
 </style>

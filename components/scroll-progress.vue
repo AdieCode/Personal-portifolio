@@ -3,8 +3,8 @@
         <div id="progress-bar-container">
                 <div id="progress-bar" :style="{ height: props.scrollPersentage }"></div>
                 <div class="info" v-if="props.scrollPersentage !== '100%'">
-                    Scroll 
-                    Down 
+                    <div>Scroll</div> 
+                    <div>Down</div>
                 </div>
         </div>
     </div>
@@ -45,7 +45,7 @@ const props = defineProps({
     font-size: 36px;
     font-weight: 900;
     bottom: 10px;
-    left: 10px;
+    left: 0px;
     pointer-events: none;
     animation: info-animate 2s infinite;
 }

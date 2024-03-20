@@ -2,16 +2,16 @@
     <div class="projects-main">
         <back-button/>
         <section class="part-one">
-          <projects-preview :projectNumber="projectNumber"/>
+          <projects-preview :projectNumber="projectNumber" ref="previewRef"/>
 
           <div class="projects-list">
             <ul>
-              <li @click="changeCurrentProject(0)">Personal portifolio</li>
-              <li @click="changeCurrentProject(1)">CCB</li>
-              <li @click="changeCurrentProject(2)">Personal portifolio</li>
-              <li @click="changeCurrentProject(3)">Personal portifolio</li>
-              <li @click="changeCurrentProject(4)">Personal portifolio</li>
-              <li @click="changeCurrentProject(5)">Personal portifolio</li>
+              <li @click="changeCurrentProject(0)">Personal portfolio <span class="category">Web dev</span></li>
+              <li @click="changeCurrentProject(1)">CCB <span class="category">Automation</span></li>
+              <li @click="changeCurrentProject(2)">Budget Manager <span class="category">API</span></li>
+              <li @click="changeCurrentProject(3)">Chat webpage <span class="category">Web dev</span></li>
+              <li @click="changeCurrentProject(4)">Manga list <span class="category">Web dev</span></li>
+              <li @click="changeCurrentProject(5)">Wiki words <span class="category">Web dev</span></li>
             </ul>
           </div>
         </section>
@@ -20,12 +20,12 @@
 
 <script setup>
 import { ref } from 'vue'
-
+const previewRef = ref()
 const projectNumber = ref(0);
 
 function changeCurrentProject(num){
   projectNumber.value = num;
-  console.log(projectNumber.value)
+  previewRef.value.scrollTop = 0;
 }
 </script>
 
@@ -89,7 +89,7 @@ function changeCurrentProject(num){
 .projects-list li{
   color: #00FF00;
   padding: 10px 4px;
-  font-size: 36px;
+  font-size: 30px;
   cursor: pointer;
   text-decoration: none;
   transition: 0.2s;
@@ -113,5 +113,17 @@ function changeCurrentProject(num){
 
 .projects-list li:hover::after {
   width: 100%; /* Width expands to 100% on hover */
+}
+
+.category{
+  color: #00ff00ad;
+  font-size: 24px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.projects-list li:hover .category{
+  opacity: 100%;
+  transition: 0.2s;
 }
 </style>

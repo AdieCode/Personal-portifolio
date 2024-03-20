@@ -2,12 +2,8 @@
     <div>
         <!-- project info in documentation style -->
         <!-- project title and description -->
-        <h1>Personal portifolio # <span class="subtitle">Personal project</span></h1>
-        <div class="sentence">
-            <div v-for="(word, index) in wrapWordsInDivs(sentence1)" :key="index"  :class="{ 'word': true, 'symbol': isSymbol(word) }" :style="{ animationDelay: `${index * 0.02}s`,opacity: '0' }" class="animated-word">
-                {{ word }}
-            </div>
-        </div>
+        <h1>Personal portfolio # <span class="subtitle">Personal project</span></h1>
+        <animated-paragraph :paragraph="sentence1"/>
 
         <!-- project screenshots for previewing -->
         <section class="images" :style="{animationDelay: `${(sentence1.split(' ').length) * 0.02}s`}">
@@ -29,64 +25,37 @@
 
         <!-- skills and Technologies used -->
         <h2 :style="{animationDelay: `${(sentence1.split(' ').length) * 0.02 + 0.02}s`}" >Technical Skills and Technologies Utilized</h2>
-        <div class="sentence">
-            <div v-for="(word, index) in wrapWordsInDivs(sentence2)" :key="index"  :class="{ 'word': true, 'symbol': isSymbol(word) }" :style="{ animationDelay: `${(index + sentence1.split(' ').length) * 0.02}s`,opacity: '0' }" class="animated-word">
-                {{ word }}
-            </div>
+        <animated-paragraph :paragraph="sentence2" :extraDelayDuration="(sentence1).split(' ').length"/>
+        <div class="tags" :style="{animationDelay: `${(sentence1.split(' ').length) * 0.02 + 0.02}s`}">
+            <tags :items="tags_list"/>
         </div>
-        <tags :items="tags_list"/>
-
 
         <!-- Personal Reflections or Lessons Learned -->
-        <h2 :style="{animationDelay: `${(sentence1.split(' ').length + sentence2.split(' ').length) * 0.02 + 0.02}s`}" >Personal Reflections or Lessons Learned</h2>
-        <div class="sentence">
-            <div v-for="(word, index) in wrapWordsInDivs(sentence3+sentence4)" :key="index"  :class="{ 'word': true, 'symbol': isSymbol(word) }" :style="{ animationDelay: `${(index + sentence1.split(' ').length + sentence2.split(' ').length) * 0.02}s`,opacity: '0' }" class="animated-word">
-                {{ word }}
-            </div>
-        </div>
+        <animated-paragraph :paragraph="sentence3+sentence4" :extraDelayDuration="(sentence1+sentence2).split(' ').length"/>
+        <animated-paragraph :paragraph="sentence5" :extraDelayDuration="(sentence1+sentence2+sentence3+sentence4).split(' ').length"/>
 
-        <div class="sentence">
-            <div v-for="(word, index) in wrapWordsInDivs(sentence5)" :key="index"  :class="{ 'word': true, 'symbol': isSymbol(word) }" :style="{ animationDelay: `${(index + sentence1.split(' ').length + sentence2.split(' ').length + sentence3.split(' ').length + sentence4.split(' ').length )* 0.02}s`,opacity: '0' }" class="animated-word">
-                {{ word }}
-            </div>
-        </div>
-
-
+        <!-- redirection and bottom space -->
+        <redirect-button link="/#contact" text="Contact me" :delayDuration="(sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length * 0.02"/>
         <div class="the-bottom"></div>
+
     </div>
 </template>
 
 <script setup>
-import {ref } from 'vue';  
+import {ref,onMounted } from 'vue';  
 
 const sentence1 = "If the customer is very smart, he or she will be able to achieve the desired result. To choose to do whatever pleasures are born of trouble, but this one results in none, so what pain! Let him be the most worthy of these advantages, blinded by sorrows.";
-const sentence2 = "These are the skills and technologies I have used throughout the development of this portifolio.";
+const sentence2 = "These are the skills and technologies I have used throughout the development of this portfolio.";
 const sentence3 = "Throughout the development of this portfolio, I have learned a lot of things, like the fact that flexbox is great and that I should really stop setting heights and just let the browser handle it. Lastly, I really hate working with images.";
 const sentence4 = "These are just some of the things that I have learned, but there are just too many to list here.";
 const sentence5 = "Another thing I have learned is that things can get messy real fast. No matter how many times I tried to plan ahead, I always ended up with something messy. And no matter how hard you try, you are always going to overcomplicate something. But I eventually got really good at giving some readability to the code and making it more understandable.";
 
-
 const tags_list = ['Vue.js', 'Nuxt.js', 'JavaScript', 'HTML', 'CSS', 'Responsive Design', 'Vue Composition API', 'Conditional Rendering', 'Debugging & Troubleshooting', 'Version Control (Git)',  'UI/UX Design Principles', 'Figma'];
 
-function wrapWordsInDivs(sentence) {
-    const wordsArray = [];
-    const sentenceSplit = sentence.split(/\b/);
-    for (const word of sentenceSplit) {
-        if (word.trim() !== '') {
-            wordsArray.push(word.trim());
-        }
-    }
-    return wordsArray;
-}
-
-
-function isSymbol(word) {
-    const symbols = ['.', ',', '!', '?', '"', "'"]; // Add more symbols if needed
-    const lastChar = word.charAt(word.length - 1);
-    return symbols.includes(lastChar);
-}
-
-
+onMounted(() => {
+  // Scroll to the top of the page
+  window.scrollTo(0, 0);
+});
 </script>
 
 <style lang="css" scoped>
@@ -94,15 +63,6 @@ function isSymbol(word) {
 .the-bottom{
     width: 100%;
     height: 110px;
-}
-.sentence{
-    width: 80%;
-    margin: auto;
-    margin-bottom: 50px;
-    font-size: 36px;
-    color: aliceblue;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .container h1{
@@ -112,7 +72,7 @@ function isSymbol(word) {
     margin-bottom: 20px;
     color: #FFF;
     text-shadow:  0px 4px 4px #000000a2;
-    font-size: 48px;
+    font-size: 40px;
     position: relative;
     opacity: 0%;
     animation: showHeading 0.3s forwards;
@@ -131,41 +91,9 @@ function isSymbol(word) {
     animation: showHeading 0.3s forwards;
 }
 
-.animated-word {
-    animation: showWord 0s forwards;
-}
-
-.word{
-    color: #FFF;
-    font-size: 24px;
-    font-weight: 300;
-    margin-left: 10px;
-    margin-bottom: 6px;
-    cursor: default;
-    transition: 3s;
-}
-
-.word:hover{
-    color: #00FF00;
-    transition: 0s;
-}
-
-.symbol{
-    margin: 0px;
-}
-
 .subtitle{
     font-size: 36px;
     color: #00FF00;
-}
-
-@keyframes showWord {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 100%;
-    }
 }
 
 @keyframes showHeading {
@@ -231,6 +159,11 @@ img{
     border-radius: 20px;
     border: 2px solid #00FF00;
     /* box-shadow:  0px 0px 6px #00FF00; */
+}
+
+.tags{
+    opacity: 0%;
+    animation: showHeading 0.3s forwards;
 }
 
 
