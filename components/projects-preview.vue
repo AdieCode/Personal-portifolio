@@ -37,9 +37,7 @@ function updateScrollPercentage() {
 }
 
 watch(() => props.projectNumber, (newVal, oldVal) => {
-  console.log(`projectNumber changed from ${oldVal} to ${newVal}`);
-  // You can add any logic you want to execute when projectNumber changes here
-  // For example, resetting scroll position
+//   console.log(`projectNumber changed from ${oldVal} to ${newVal}`);
   if (scrollContainer.value) {
     scrollContainer.value.scrollTop = 0;
   }
@@ -87,6 +85,7 @@ function isMobileDevice() {
     background-color: #313131;
     overflow-x: hidden;
     overflow-y: scroll;
+    scroll-behavior:auto;
 }
 
 

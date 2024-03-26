@@ -44,14 +44,28 @@
         </div>
       </section>
 
-      <section class="part-three">
-        <div class="switch-container">
-          <h2>hello</h2>
-          <div class="shuffel-container">
+      <section class="part-four">
+        <div class="scroll-container">
 
+          <div class="moving-container"  @mouseover="slowDown" @mouseout="speedUp">
+            <div class="card">1</div>
+            <div class="card">2</div>
+            <div class="card">3</div>
+            <div class="card">4</div>
+            <div class="card">5</div>
+            <div class="card">6</div>
           </div>
-        </div>
 
+          <!-- <div class="moving-container-2"  @mouseover="slowDown" @mouseout="speedUp">
+            <div class="card">7</div>
+            <div class="card">8</div>
+            <div class="card">9</div>
+            <div class="card">10</div>
+            <div class="card">11</div>
+            <div class="card">12</div>
+          </div> -->
+
+        </div>
       </section>
     </div>
 </template>
@@ -61,6 +75,10 @@ import { ref } from 'vue';
 const containerOneSlide = ref('')
 const containerTwoSlide = ref('')
 const progressLanguages = ref(0)
+const previousMouseX = ref(0);
+const mouseX = ref(0);
+// const grabbed = ref(false)
+const cursor = ref("")
 
 const moveContainerLeft = () =>{
 
@@ -78,24 +96,27 @@ const moveContainerLeft = () =>{
 
 const moveContainerRight = () =>{
 
-if (progressLanguages.value === 0){
-  containerOneSlide.value = 'slide-right-one';
-  containerTwoSlide.value = 'slide-right-two';
-  progressLanguages.value += 1;
-} else if (progressLanguages.value === 1){
-  containerOneSlide.value = 'slide-right-two';
-  containerTwoSlide.value = 'slide-right-one';
-  progressLanguages.value -= 1;
-}
+  if (progressLanguages.value === 0){
+    containerOneSlide.value = 'slide-right-one';
+    containerTwoSlide.value = 'slide-right-two';
+    progressLanguages.value += 1;
+  } else if (progressLanguages.value === 1){
+    containerOneSlide.value = 'slide-right-two';
+    containerTwoSlide.value = 'slide-right-one';
+    progressLanguages.value -= 1;
+  }
 
 }
 
-const setSliders = () => {
-  progressLanguages.value = 0;
-  slide
-
+// Function to slow down scrolling
+function slowDown() {
+  scrollSpeed = 1; // Adjust to desired slowdown speed
 }
 
+// Function to speed up scrolling
+function speedUp() {
+  scrollSpeed = 10000; // Adjust to desired normal speed
+}
 </script>
 
 
@@ -109,7 +130,7 @@ const setSliders = () => {
 }
 
 ::-webkit-scrollbar {
-  width: 10px; 
+  width: 0px; 
   background-color: #373737;
 }
 
@@ -409,10 +430,68 @@ const setSliders = () => {
 
 .part-three{
   height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
+.scroll-container{
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  gap: 2rem;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  position: relative;
+}
+
+.part-four{
+  width: 100%;
+  display: flex;
+}
+
+.moving-container{
+  width: auto;
+  display: flex;
+  gap: 2rem;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  position: relative;
+  /* animation: leftMoving 12s linear infinite; */
+}
+
+.moving-container-2{
+  width: auto;
+  display: flex;
+  gap: 2rem;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  position: relative;
+
+}
+
+.card{
+  min-width: 700px;
+  height: 400px; 
+  background-color: #373737; 
+  border-radius: 10px;
+  margin: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 46px;
+  animation: leftMoving 12s linear infinite;
+}
+
+@keyframes leftMoving {
+  to {
+    transform: translate(-100%);
+  }
+}
+
+
 
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="paragraph">
-        <div v-for="(word, index) in splitParagraph(props.paragraph)" :key="index"  class="word animated-word" :style="{ animationDelay: `${(index + props.extraDelayDuration) * 0.02}s`,opacity: '0' }" >
+        <div v-for="(word, index) in splitParagraph(props.paragraph)" :key="index"  class="word animated-word" :style="{ animationDelay: `${(index + props.extraDelayDuration) * nextWordDelay}s`,opacity: '0' }" >
             {{ word }}
         </div>
     </div>
@@ -8,7 +8,7 @@
 
 <script setup>
 
-
+const nextWordDelay = 0.02;
 const props = defineProps({
     paragraph: { type: String, default: "no sentence passed" } ,
     extraDelayDuration: { type: Number, default: 0 } 
@@ -56,10 +56,6 @@ function splitParagraph(sentence) {
 .word:hover{
     color: #00FF00;
     transition: 0s;
-}
-
-.symbol{
-    margin: 0px;
 }
 
 @keyframes showWord {

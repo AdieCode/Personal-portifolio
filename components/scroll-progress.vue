@@ -45,7 +45,7 @@ const props = defineProps({
     font-size: 36px;
     font-weight: 900;
     bottom: 10px;
-    left: 0px;
+    left:6px;
     pointer-events: none;
     animation: info-animate 2s infinite;
 }

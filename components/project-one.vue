@@ -31,6 +31,7 @@
         </div>
 
         <!-- Personal Reflections or Lessons Learned -->
+        <h2 :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * 0.02 + 0.02}s`}" >Personal Reflections or Lessons Learned</h2>
         <animated-paragraph :paragraph="sentence3+sentence4" :extraDelayDuration="(sentence1+sentence2).split(' ').length"/>
         <animated-paragraph :paragraph="sentence5" :extraDelayDuration="(sentence1+sentence2+sentence3+sentence4).split(' ').length"/>
 
