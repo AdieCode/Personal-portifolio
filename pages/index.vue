@@ -51,28 +51,28 @@ const router = useRouter()
 
 const navInfo = {
   about : {
-    imageSource : 'images/user.png',
+    imageSource : 'assets/imgs/user.png',
     title: 'About me',
     height : '260',
     width: '277',
     rotation: '-10'
   },
   projects : {
-    imageSource : 'images/folder.png',
+    imageSource : 'assets/imgs/folder.png',
     title: 'Projects',
     height : '342',
     width: '250',
     rotation: '25'
   },
   whatIKnow : {
-    imageSource : 'images/brain.png',
+    imageSource : 'assets/imgs/brain.png',
     title: 'What I know',
     height : '320',
     width: '304',
     rotation: '18'
   },
   myLikes : {
-    imageSource : 'images/thumb.png',
+    imageSource : 'assets/imgs/thumb.png',
     title: 'My likes',
     height : '240',
     width: '232',
