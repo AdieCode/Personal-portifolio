@@ -1,7 +1,8 @@
 <template>
     <div class="main" :style="{ height: `${props.height}px`, width: `${props.width}px`, transform: `rotate(${props.rotation}deg)` }">
         <div class="shadow">
-            <img :src="`/_nuxt/${props.imageSource}`" :alt="props.imageSource" >
+            <img :src="props.imageSource" :alt="props.imageSource" >
+            <img :src="`../${props.imageSource}`" :alt="props.imageSource" >
             <h2>{{ props.title }}</h2>
         </div>
     </div>
