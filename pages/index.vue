@@ -51,7 +51,7 @@ const router = useRouter()
 
 const navInfo = {
   about : {
-    imageSource : 'images/user.png',
+    imageSource : '/images/user.png',
     title: 'About me',
     height : '260',
     width: '277',
