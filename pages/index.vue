@@ -14,7 +14,7 @@
                                                width: `${navInfo.about.width}px`, 
                                                transform: `rotate(${navInfo.about.rotation}deg)`,}">
                         <div class="shadow">
-                            <img :src="`/_nuxt/${navInfo.about.imageSource}`"  >
+                            <img src="../images/user.png"  >
                             <h2> {{ navInfo.about.title }} </h2>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                                                width: `${navInfo.projects.width}px`, 
                                                transform: `rotate(${navInfo.projects.rotation}deg)`,}">
                         <div class="shadow">
-                            <img :src="`/_nuxt/${navInfo.projects.imageSource}`"  >
+                            <img src="../images/folder.png"  >
                             <h2> {{ navInfo.projects.title }} </h2>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                                                width: `${navInfo.whatIKnow.width}px`, 
                                                transform: `rotate(${navInfo.whatIKnow.rotation}deg)`,}">
                         <div class="shadow">
-                            <img :src="`/_nuxt/${navInfo.whatIKnow.imageSource}`"  >
+                            <img src="../images/brain.png"  >
                             <h2> {{ navInfo.whatIKnow.title }} </h2>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                                                width: `${navInfo.myLikes.width}px`, 
                                                transform: `rotate(${navInfo.myLikes.rotation}deg)`,}">
                         <div class="shadow">
-                            <img :src="`/_nuxt/${navInfo.myLikes.imageSource}`"  >
+                            <img src="../images/thumb.png" >
                             <h2> {{ navInfo.myLikes.title }} </h2>
                         </div>
                     </div>
