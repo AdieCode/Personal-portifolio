@@ -5,12 +5,13 @@
         <animated-paragraph :paragraph="sentence1"/>
         
         <!-- description of solution -->
-        <h2 :style="{animationDelay: `${(sentence1.split(' ').length) * 0.02}s`}" >My Solution</h2>
+        <h2 :style="{animationDelay: `${(sentence1.split(' ').length) * nextWordDelay}s`}" >My Solution</h2>
         <animated-paragraph :paragraph="sentence2" :extraDelayDuration="sentence1.split(' ').length"/>
 
         <!-- code snippet -->
-        <h3 :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * 0.02}s`}" >Example Code:</h3>
-        <div class="code-snippet" :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * 0.02}s`}">                
+        <h3 :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * nextWordDelay}s`}" >Example Code:</h3>
+        <div class="code-snippet" :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * nextWordDelay}s`}">  
+
             <div class="line"><span class="purple-text">const</span> Bot <span class="cyan-text">=</span> <span class="red-text">require</span>(<span class="cyan-text">'../modules/bot'</span>); </div>                     
             <div class="line"><span class="purple-text">const</span> myBot <span class="cyan-text">=</span> <span class="purple-text">new</span> Bot;   </div>    
             <br>                 
@@ -44,11 +45,12 @@
             <div class="line"> console.<span class="red-text">log</span>(<span class="cyan-text">'------------------------'</span>);</div>  
             <div class="line"> console.<span class="red-text">log</span>(<span class="cyan-text">`bot: </span>${myBot.<span class="red-text">respond</span>(wordToGive)}<span class="cyan-text">`</span>);</div>  
             <div class="line">console.<span class="red-text">log</span>(<span class="cyan-text">'========================='</span>);</div>      
+
         </div>
 
         <!-- code snippet -->
-        <h3 :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * 0.02}s`}" >Example Output:</h3>
-        <div class="code-snippet" :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * 0.02}s`}">
+        <h3 :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * nextWordDelay}s`}" >Example Output:</h3>
+        <div class="code-snippet" :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * nextWordDelay}s`}">
             Conversation with bot    <br>
             =========================<br>
             bot: please enter a word:<br>
@@ -67,19 +69,19 @@
         <animated-paragraph :paragraph="sentence4" :extraDelayDuration="(sentence1+sentence2+sentence3).split(' ').length"/>
         
         <!-- skills and Technologies used -->
-        <h2 :style="{animationDelay: `${(sentence1+sentence2+sentence3+sentence4).split(' ').length * 0.02 + 0.02}s`}" >Technical Skills and Technologies Utilized</h2>
+        <h2 :style="{animationDelay: `${(sentence1+sentence2+sentence3+sentence4).split(' ').length * nextWordDelay + nextWordDelay}s`}" >Technical Skills and Technologies Utilized</h2>
         <animated-paragraph :paragraph="sentence5" :extraDelayDuration="(sentence1+sentence2+sentence3+sentence4).split(' ').length"/>
-        <div class="tags" :style="{animationDelay: `${(sentence1+sentence2+sentence3+sentence4).split(' ').length  * 0.02 + 0.02}s`}">
+        <div class="tags" :style="{animationDelay: `${(sentence1+sentence2+sentence3+sentence4).split(' ').length  * nextWordDelay + nextWordDelay}s`}">
             <tags :items="tags_list"/>
         </div>
 
         <!-- the why paragraph -->
-        <h2 :style="{animationDelay: `${((sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length) * 0.02}s`}" >Why Make This?</h2>
+        <h2 :style="{animationDelay: `${((sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length) * nextWordDelay}s`}" >Why Make This?</h2>
         <animated-paragraph :paragraph="sentence6" :extraDelayDuration="(sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length"/>
 
         <!-- redirection and bottom space -->
-        <redirect-button link="https://github.com/AdieCode/CCB--command-controled-bot" text="Checkout reposetory" :delayDuration="(sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length * 0.02"/>
-        <redirect-button link="/#contact" text="Contact me"  :delayDuration="(sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length * 0.02"/>
+        <redirect-button link="https://github.com/AdieCode/CCB--command-controled-bot" text="Checkout reposetory" :delayDuration="(sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length * nextWordDelay"/>
+        <redirect-button link="/#contact" text="Contact me"  :delayDuration="(sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length * nextWordDelay"/>
         <div class="the-bottom"></div>
 
     </div>
@@ -88,6 +90,7 @@
 <script setup>
 import {ref } from 'vue'; 
 
+const nextWordDelay = 0.01;
 let previousIndex = 0;
 
 const sentence1 = "This is a bot that can be preprogrammed by a developer with logic to handle text provided by a user.";

@@ -6,7 +6,7 @@
         <animated-paragraph :paragraph="sentence1"/>
 
         <!-- project screenshots for previewing -->
-        <section class="images" :style="{animationDelay: `${(sentence1.split(' ').length) * 0.02}s`}">
+        <section class="images" :style="{animationDelay: `${(sentence1.split(' ').length) * nextWordDelay}s`}">
             
             <div class="row">
                 <div class="img-two img-zoom" @mouseenter="changeCursorSizeBig" >
@@ -24,19 +24,19 @@
         </section>
 
         <!-- skills and Technologies used -->
-        <h2 :style="{animationDelay: `${(sentence1.split(' ').length) * 0.02 + 0.02}s`}" >Technical Skills and Technologies Utilized</h2>
+        <h2 :style="{animationDelay: `${(sentence1.split(' ').length) * nextWordDelay + nextWordDelay}s`}" >Technical Skills and Technologies Utilized</h2>
         <animated-paragraph :paragraph="sentence2" :extraDelayDuration="(sentence1).split(' ').length"/>
-        <div class="tags" :style="{animationDelay: `${(sentence1.split(' ').length) * 0.02 + 0.02}s`}">
+        <div class="tags" :style="{animationDelay: `${(sentence1.split(' ').length) * nextWordDelay + nextWordDelay}s`}">
             <tags :items="tags_list"/>
         </div>
 
         <!-- Personal Reflections or Lessons Learned -->
-        <h2 :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * 0.02 + 0.02}s`}" >Personal Reflections or Lessons Learned</h2>
+        <h2 :style="{animationDelay: `${((sentence1+sentence2).split(' ').length) * nextWordDelay + nextWordDelay}s`}" >Personal Reflections or Lessons Learned</h2>
         <animated-paragraph :paragraph="sentence3+sentence4" :extraDelayDuration="(sentence1+sentence2).split(' ').length"/>
         <animated-paragraph :paragraph="sentence5" :extraDelayDuration="(sentence1+sentence2+sentence3+sentence4).split(' ').length"/>
 
         <!-- redirection and bottom space -->
-        <redirect-button link="/#contact" text="Contact me" :delayDuration="(sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length * 0.02"/>
+        <redirect-button link="/#contact" text="Contact me" :delayDuration="(sentence1+sentence2+sentence3+sentence4+sentence5).split(' ').length * nextWordDelay"/>
         <div class="the-bottom"></div>
 
     </div>
@@ -44,6 +44,8 @@
 
 <script setup>
 import {ref,onMounted } from 'vue';  
+
+const nextWordDelay = 0.01;
 
 const sentence1 = "If the customer is very smart, he or she will be able to achieve the desired result. To choose to do whatever pleasures are born of trouble, but this one results in none, so what pain! Let him be the most worthy of these advantages, blinded by sorrows.";
 const sentence2 = "These are the skills and technologies I have used throughout the development of this portfolio.";

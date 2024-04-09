@@ -8,7 +8,7 @@
 
 <script setup>
 
-const nextWordDelay = 0.02;
+const nextWordDelay = 0.01;
 const props = defineProps({
     paragraph: { type: String, default: "no sentence passed" } ,
     extraDelayDuration: { type: Number, default: 0 } 

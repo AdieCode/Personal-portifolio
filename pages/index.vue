@@ -7,21 +7,57 @@
                 <h3>Hi i'm</h3>
                 <h1>Adriaan</h1>
             </div>
-            <div class="choices">
+            <div class="choices">a
                 <div class="about" @click="goToAbout">
-                    <maincard :imageSource="navInfo.about.imageSource" :title="navInfo.about.title" :height="navInfo.about.height" :width="navInfo.about.width" :rotation="navInfo.about.rotation"/>
+                    <!-- <maincard :imageSource="navInfo.about.imageSource" :title="navInfo.about.title" :height="navInfo.about.height" :width="navInfo.about.width" :rotation="navInfo.about.rotation"/> -->
+                    <div class="main" :style="{ height: `${navInfo.about.height}px`,
+                                               width: `${navInfo.about.width}px`, 
+                                               transform: `rotate(${navInfo.about.rotation}deg)`,}">
+                        <div class="shadow">
+                            <img :src="`/_nuxt/${navInfo.about.imageSource}`"  >
+                            <h2> {{ navInfo.about.title }} </h2>
+                        </div>
+                    </div>
+
                 </div>
+
     
                 <div class="projects" @click="goToProjects">
-                    <maincard :imageSource="navInfo.projects.imageSource" :title="navInfo.projects.title" :height="navInfo.projects.height" :width="navInfo.projects.width" :rotation="navInfo.projects.rotation"/>
+                    <!-- <maincard :imageSource="navInfo.projects.imageSource" :title="navInfo.projects.title" :height="navInfo.projects.height" :width="navInfo.projects.width" :rotation="navInfo.projects.rotation"/> -->
+                    <div class="main" :style="{ height: `${navInfo.projects.height}px`,
+                                               width: `${navInfo.projects.width}px`, 
+                                               transform: `rotate(${navInfo.projects.rotation}deg)`,}">
+                        <div class="shadow">
+                            <img :src="`/_nuxt/${navInfo.projects.imageSource}`"  >
+                            <h2> {{ navInfo.projects.title }} </h2>
+                        </div>
+                    </div>
                 </div>
+
     
                 <div class="what-i-know" @click="goToWhatIKnow">
-                    <maincard :imageSource="navInfo.whatIKnow.imageSource" :title="navInfo.whatIKnow.title" :height="navInfo.whatIKnow.height" :width="navInfo.whatIKnow.width" :rotation="navInfo.whatIKnow.rotation"/>
+                    <!-- <maincard :imageSource="navInfo.whatIKnow.imageSource" :title="navInfo.whatIKnow.title" :height="navInfo.whatIKnow.height" :width="navInfo.whatIKnow.width" :rotation="navInfo.whatIKnow.rotation"/> -->
+                    <div class="main" :style="{ height: `${navInfo.whatIKnow.height}px`,
+                                               width: `${navInfo.whatIKnow.width}px`, 
+                                               transform: `rotate(${navInfo.whatIKnow.rotation}deg)`,}">
+                        <div class="shadow">
+                            <img :src="`/_nuxt/${navInfo.whatIKnow.imageSource}`"  >
+                            <h2> {{ navInfo.whatIKnow.title }} </h2>
+                        </div>
+                    </div>
                 </div>
+
     
                 <div class="my-likes" @click="goToMyLikes">
-                    <maincard :imageSource="navInfo.myLikes.imageSource" :title="navInfo.myLikes.title" :height="navInfo.myLikes.height" :width="navInfo.myLikes.width" :rotation="navInfo.myLikes.rotation"/>
+                    <!-- <maincard :imageSource="navInfo.myLikes.imageSource" :title="navInfo.myLikes.title" :height="navInfo.myLikes.height" :width="navInfo.myLikes.width" :rotation="navInfo.myLikes.rotation"/> -->
+                    <div class="main" :style="{ height: `${navInfo.myLikes.height}px`,
+                                               width: `${navInfo.myLikes.width}px`, 
+                                               transform: `rotate(${navInfo.myLikes.rotation}deg)`,}">
+                        <div class="shadow">
+                            <img :src="`/_nuxt/${navInfo.myLikes.imageSource}`"  >
+                            <h2> {{ navInfo.myLikes.title }} </h2>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -306,6 +342,34 @@ function goToMyLikes() {
   font-size: 24px;
   color: #9747FF;
   font-weight: 400;
+}
+
+/* temp */
+.shadow {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #313131;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px 3px #00ff0090; /* x-ofset | y-ofset | blurr | spread | color*/
+    position: relative;
+    transition: 0.4s;
+}
+
+.main:hover .shadow { /* Apply box-shadow on hover */
+    box-shadow: 0 4px 10px 7px #00FF00;
+    transition: 0.1s;
+}
+
+.shadow h2 {
+ color: #00FF0070;
+ text-shadow: 0 4px 4px  #00000050; /* x-ofset | y-ofset | blurr | spread | color*/
+ font-size: 36px;
+ position: fixed;
+ bottom: 20px;
 }
 
 @media (max-width: 1300px) {
