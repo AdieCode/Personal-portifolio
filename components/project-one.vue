@@ -47,7 +47,7 @@ import {ref,onMounted } from 'vue';
 
 const nextWordDelay = 0.01;
 
-const sentence1 = "If the customer is very smart, he or she will be able to achieve the desired result. To choose to do whatever pleasures are born of trouble, but this one results in none, so what pain! Let him be the most worthy of these advantages, blinded by sorrows.";
+const sentence1 = "Welcome to the digital gallery of Adriaan, a dedicated web developer driven by innovation, creativity, and a pursuit of excellence. Within this portfolio, you'll discover a carefully curated collection of my finest work, offering a glimpse into the diverse spectrum of skills, experiences, and projects that define my journey and expertise.";
 const sentence2 = "These are the skills and technologies I have used throughout the development of this portfolio.";
 const sentence3 = "Throughout the development of this portfolio, I have learned a lot of things, like the fact that flexbox is great and that I should really stop setting heights and just let the browser handle it. Lastly, I really hate working with images.";
 const sentence4 = "These are just some of the things that I have learned, but there are just too many to list here.";

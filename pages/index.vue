@@ -199,7 +199,7 @@ function goToMyLikes() {
 }
 .main-page{
   width: 100%;
-  height: 200vh;
+  height: 220vh;
   background-color: #181818;
   display: flex;
   flex-direction: column;
@@ -211,7 +211,7 @@ function goToMyLikes() {
 
 .options{
   width: 100%;
-  height: 100vh;
+  min-height: 920px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -387,6 +387,7 @@ function goToMyLikes() {
     }
     .choices{
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
         width: 550px;
         height: 560px;
@@ -435,11 +436,12 @@ function goToMyLikes() {
    }
    .choices{
     justify-content: flex-start;
+    flex-direction: column;
     flex-wrap: nowrap;
     height: 1080px;
    }
    .options{
-    height: 200vh;
+    height: auto;
    }
 
     .describe-contact{
@@ -455,4 +457,28 @@ function goToMyLikes() {
     }
 }
 
+
+@media (max-width: 1300px) {
+    .main {
+        width: 230px !important; 
+        height: 240px !important;
+        transform: rotate(0deg) !important;
+        margin: 20px;
+    }
+    h2 {
+        color: #00FF0070;
+        text-shadow: 0 4px 4px  #00000050; /* x-ofset | y-ofset | blurr | spread | color*/
+        font-size: 24px;
+        position: fixed;
+        bottom: 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .main {
+        margin: 20px 0px;
+    }
+
+}
 </style>
