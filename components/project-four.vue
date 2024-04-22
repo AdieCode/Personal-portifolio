@@ -7,6 +7,14 @@
             </div>
         </div>
 
+        <div class="row">
+
+            <video id="myVideo" width="80%" height="auto" autoplay loop muted>
+                <source src="../videos/demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
     </div>
 </template>
 
@@ -26,6 +34,23 @@ function wrapWordsInDivs(sentence) {
 </script>
 
 <style lang="css" scoped>
+
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+video{
+    border-radius: 10px;
+    border: 2px solid #00FF00;
+    transition: 0.6s;
+    
+}
+
+video:hover{
+    transform: scale(1.1); 
+}
+
 .the-bottom{
     width: 100%;
     height: 110px;
